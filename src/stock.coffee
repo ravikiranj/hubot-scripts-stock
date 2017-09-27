@@ -30,7 +30,7 @@ module.exports = (robot) ->
         ticker = escape(msg.match[1])
         # Sample URL: https://query2.finance.yahoo.com/v10/finance/quoteSummary/MSFT?modules=price
         url = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/#{ticker}?modules=price"
-        errorMsg = "Error fetching stock info for ticket = #{ticker}"
+        errorMsg = "Error fetching stock info for ticker = #{ticker}"
         request.get url, (error, response, data) ->
             if not response or response.statusCode != 200 or not data
                 robot.logger.error "URL = #{url}, status code = #{response.statusCode}, data = #{data}"
