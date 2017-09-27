@@ -18,6 +18,12 @@ module.exports = function (grunt) {
         commitMessage: 'Prepared to release <%= version %>.'
       }
     },
+    coffeelint: {
+      options: {
+        configFile: 'coffeelint.json'
+      },  
+      app: ['src/**/*.coffee', 'test/**/*.coffee']  
+    }, 
     watch: {
       files: ['Gruntfile.js', 'src/**/*.coffee', 'test/**/*.coffee'],
       tasks: ['test']
@@ -28,6 +34,7 @@ module.exports = function (grunt) {
   require('matchdep').filterDev(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('lint', ['coffeelint']);
   grunt.registerTask('test:watch', ['watch']);
   grunt.registerTask('default', ['test']);
 };
